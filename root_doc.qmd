@@ -18,6 +18,13 @@ energy <- read_csv("data/us_energy.csv")
 Create a line chart of energy over time, with color based on the energy type
 
 ```{r}
-energy_time_graph <- ggplot(data = energy, aes(x = year, y = quadrillion_btu, group = type)) + 
-  geom_line()
+ggplot(data = energy, aes(x = year, y = quadrillion_btu)) + 
+  geom_line(aes(color=type))
+```
+
+```{r}
+energy_time_graph <- ggplot() +
+  geom_point(data = energy, aes(x = year, y = quadrillion_btu, color = type)) +
+  geom_line(data = energy, aes(x = year, y = quadrillion_btu, color = type))
+energy_time_graph
 ```
